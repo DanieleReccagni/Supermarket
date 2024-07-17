@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Crea</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/pages.css}" />
+</head>
+
+<body>
+	<div align="center">
+		<h1>Crea un nuovo prodotto</h1>
+		<form action="#" th:action="@{/save}" th:object="${product}" method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Codice</td>
+					<td><input type="text" th:field="*{code}" /></td>
+				</tr>
+				<tr>
+					<td>Descrizione</td>
+					<td><input type="text" th:field="*{description}" /></td>
+				</tr>
+				<tr>
+					<td>Categoria</td>
+					<td><input type="text" th:field="*{category}" /></td>
+				</tr>
+				<tr>
+					<td>Quantità</td>
+					<td><input type="text" th:field="*{quantity}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit">Aggiungi</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a th:href="@{/}" class="back-button">Indietro</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+
+</html>

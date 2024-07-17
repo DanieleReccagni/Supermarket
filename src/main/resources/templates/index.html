@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Supermercato</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+</head>
+
+<body>
+	<div align="center">
+
+		<h1>Supermercato</h1>
+
+		<div>
+		    <button th:onclick="|window.location='@{/create}'|">Aggiungi prodotto</button>
+		    <button th:onclick="|window.location='@{/search}'|">Cerca prodotto</button>
+		</div>
+
+		<form th:action="@{/filter}" method="get">
+		    <input type="text" name="code" th:value="${code}" placeholder="Codice">
+		    <input type="text" name="description" th:value="${description}" placeholder="Descrizione">
+		    <input type="text" name="category" th:value="${category}" placeholder="Categoria">
+		    <button type="submit">Filtra</button>
+		</form>
+
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Codice</th>
+					<th>Descrizione</th>
+					<th>Categoria</th>
+					<th>Quantità</th>
+					<th>Azioni</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${listProducts}">
+					<td th:text="${product.code}">Codice</td>
+					<td th:text="${product.description}">Descrizione</td>
+					<td th:text="${product.category}">Categoria</td>
+					<td th:text="${product.quantity}">Quantità</td>
+					<td>
+						<a th:href="@{'/update/' + ${product.code}}">Modifica</a>
+						<span>|</span>
+						<a th:href="@{'/delete/' + ${product.code}}">Elimina</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

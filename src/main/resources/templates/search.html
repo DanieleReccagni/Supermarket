@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Cerca</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/pages.css}" />
+</head>
+
+<body>
+	<div align="center">
+		<h1>Cerca un prodotto</h1>
+		<form action="#" th:action="@{/search}" th:object="${product}" method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td>Codice</td>
+					<td><input type="text" th:field="*{code}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit">Cerca</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<div>
+			<h2>Dettagli del prodotto</h2>
+			<table border="1" cellpadding="10">
+				<tr>
+					<td>Codice</td>
+					<td th:text="${product.code}"></td>
+				</tr>
+				<tr>
+					<td>Descrizione</td>
+					<td th:text="${product.description}"></td>
+				</tr>
+				<tr>
+					<td>Categoria</td>
+					<td th:text="${product.category}"></td>
+				</tr>
+				<tr>
+					<td>Quantità</td>
+					<td th:text="${product.quantity}"></td>
+				</tr>
+			</table>
+		</div>
+		<a th:href="@{/}" class="back-button">Indietro</a>
+	</div>
+
+</body>
+
+</html>
